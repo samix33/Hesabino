@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layoutDirection="rtl"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="#FFFFFF">
+
+    <View
+        android:layout_width="48dp"
+        android:layout_height="5dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/bg_bottom_sheet_handle" />
+
+    <TextView
+        android:fontFamily="@font/vazirmatn_bold"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="حذف تراکنش؟"
+        android:textColor="#111827"
+        android:textSize="21sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:fontFamily="@font/vazirmatn_regular"
+
+        android:id="@+id/tvDeleteWarning"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:lineSpacingExtra="4dp"
+        android:text="اگر این تراکنش را حذف کنی، مبلغ آن از موجودی و تمام محاسبات مالی اپ حذف می‌شود."
+        android:textColor="#6B7280"
+        android:textSize="14sp" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        app:cardBackgroundColor="#FEF2F2"
+        app:cardCornerRadius="18dp"
+        app:cardElevation="0dp">
+
+        <TextView
+            android:fontFamily="@font/vazirmatn_regular"
+
+            android:id="@+id/tvTransactionInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="غذا • ۲۵۰.۰۰۰ تومان"
+            android:textColor="#991B1B"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDeleteTransaction"
+            android:layout_width="0dp"
+            android:layout_height="54dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/vazirmatn_regular"
+
+            android:text="حذف تراکنش"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:backgroundTint="#DC2626"
+            app:cornerRadius="16dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCancelDelete"
+            android:layout_width="0dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:text="انصراف"
+            android:fontFamily="@font/vazirmatn_regular"
+
+            android:textColor="#4F46E5"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:backgroundTint="#EEF2FF"
+            app:cornerRadius="16dp" />
+    </LinearLayout>
+
+</LinearLayout>

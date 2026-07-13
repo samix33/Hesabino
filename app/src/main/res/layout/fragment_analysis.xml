@@ -1,0 +1,893 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    android:id="@+id/scrollView"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4F6FA"
+    android:fillViewport="true"
+    android:layoutDirection="rtl">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- عنوان -->
+        <TextView
+            android:fontFamily="@font/vazirmatn_bold"
+
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="تحلیل هزینه‌ها"
+            android:textColor="#111827"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- زیرعنوان -->
+        <TextView
+            android:fontFamily="@font/vazirmatn_regular"
+
+            android:id="@+id/tvSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="نمای کلی از خرج‌های شما در بازه زمانی انتخاب‌شده"
+            android:textColor="#6B7280"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="@+id/tvTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+        <!-- فیلتر زمانی -->
+        <HorizontalScrollView
+            android:id="@+id/timeFilterScroll"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:scrollbars="none"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvSubtitle">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupFilter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layoutDirection="rtl"
+                app:chipSpacingHorizontal="8dp"
+                app:selectionRequired="true"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipToday"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+
+                    android:text="امروز"
+                    android:textColor="#4F46E5"
+                    app:chipBackgroundColor="#EEF2FF"
+                    app:chipCornerRadius="14dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipWeek"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="هفته"
+                    android:textColor="#6B7280"
+                    app:chipBackgroundColor="#FFFFFF"
+                    app:chipCornerRadius="14dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipMonth"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ماه"
+                    android:textColor="#6B7280"
+                    app:chipBackgroundColor="#FFFFFF"
+                    app:chipCornerRadius="14dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipAll"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="همه"
+                    android:textColor="#6B7280"
+                    app:chipBackgroundColor="#FFFFFF"
+                    app:chipCornerRadius="14dp" />
+
+            </com.google.android.material.chip.ChipGroup>
+        </HorizontalScrollView>
+
+        <!-- کارت جمع کل -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardTotalExpense"
+            android:layout_width="0dp"
+            android:layout_height="140dp"
+            android:layout_marginTop="18dp"
+            app:cardBackgroundColor="#4F46E5"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/timeFilterScroll">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:fontFamily="@font/vazirmatn_regular"
+
+                    android:id="@+id/tvtotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="مجموع هزینه این ماه"
+                    android:textColor="#E0E7FF"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvTotalExpense"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="۱۲,۸۵۰,۰۰۰ تومان"
+                    android:fontFamily="@font/vazirmatn_semibold"
+
+                    android:textColor="#FFFFFF"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvComparedToLastMonth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="۸٪ بیشتر از ماه قبل"
+                    android:textColor="#C7D2FE"
+                    android:fontFamily="@font/vazirmatn_regular"
+
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- دو کارت خلاصه -->
+        <LinearLayout
+            android:id="@+id/layoutSummaryCards"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardTotalExpense">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="104dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#E5E7EB"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="بیشترین دسته"
+                        android:textColor="#6B7280"
+                        android:fontFamily="@font/vazirmatn_bold"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvTopCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/vazirmatn_regular"
+
+                        android:text="پوشاک"
+                        android:textColor="#111827"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvTopCategoryAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="45.0000"
+                        android:textColor="#F44336"
+                        android:fontFamily="@font/vazirmatn_semibold"
+
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="104dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#E5E7EB"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:fontFamily="@font/vazirmatn_bold"
+
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="تعداد تراکنش‌ها"
+                        android:textColor="#6B7280"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvTransactionsCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="۲۸"
+                        android:fontFamily="@font/vazirmatn_semibold"
+
+                        android:textColor="#111827"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvAverageDaily"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/vazirmatn_semibold"
+
+                        android:text="میانگین روزانه: ۴۲۰,۰۰۰"
+                        android:textColor="#6B7280"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+        <!-- گزارش هوشمند -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardInsight"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutSummaryCards"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="22dp"
+            app:cardElevation="0dp"
+            app:strokeColor="#E5E7EB"
+            app:strokeWidth="1dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="18dp"
+                android:layoutDirection="rtl">
+
+                <!-- Header -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvMonthlyReportTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="گزارش این ماه ✨"
+                        android:fontFamily="@font/vazirmatn_bold"
+
+                        android:textColor="#111827"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:fontFamily="@font/vazirmatn_regular"
+
+                        android:id="@+id/tvMonthlyReportBadge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_report_badge"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:paddingTop="6dp"
+                        android:paddingBottom="6dp"
+                        android:text="ماه جاری"
+                        android:textColor="#4F46E5"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <!-- Short report text -->
+                <TextView
+                    android:id="@+id/tvMonthlyReportText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:fontFamily="@font/vazirmatn_regular"
+
+                    android:text="بیشترین هزینه شما این ماه مربوط به دسته غذا بوده و نسبت به ماه قبل ۱۵٪ افزایش داشته است."
+                    android:textColor="#4B5563"
+                    android:textSize="14sp"
+                    android:lineSpacingExtra="5dp" />
+
+                <!-- Divider -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="16dp"
+                    android:background="#F1F5F9" />
+
+                <!-- Stats Row 1 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal">
+
+                    <!-- Top category -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="بیشترین خرج"
+                            android:textColor="#9CA3AF"
+                            android:fontFamily="@font/vazirmatn_bold"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/tvReportTopCategory"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:text="🍔 غذا"
+                            android:fontFamily="@font/vazirmatn_regular"
+
+                            android:textColor="#111827"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- Month change -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:fontFamily="@font/vazirmatn_bold"
+
+                            android:layout_height="wrap_content"
+                            android:text="نسبت به ماه قبل"
+                            android:textColor="#9CA3AF"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tvReportMonthChange"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="۱۵٪ افزایش"
+                            android:fontFamily="@font/vazirmatn_regular"
+
+                            android:textColor="#DC2626"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Stats Row 2 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:orientation="horizontal">
+
+                    <!-- Daily average -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/teat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="میانگین روزانه"
+                            android:fontFamily="@font/vazirmatn_bold"
+                            android:textColor="#9CA3AF"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tvReportDailyAverage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:fontFamily="@font/vazirmatn_semibold"
+                            android:text="۲۸۰.۰۰۰ تومان"
+                            android:textColor="#111827"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- Lowest category -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="کمترین خرج"
+                            android:textColor="#9CA3AF"
+                            android:fontFamily="@font/vazirmatn_bold"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tvReportLowCategory"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:fontFamily="@font/vazirmatn_regular"
+                            android:text="🎮 سرگرمی"
+                            android:textColor="#111827"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Suggestion box -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardMonthlySuggestion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    app:cardBackgroundColor="#EEF2FF"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp">
+
+                    <TextView
+                        android:id="@+id/tvMonthlySuggestion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="4dp"
+                        android:padding="14dp"
+                        android:text="پیشنهاد: اگر هزینه دسته غذا را ۱۰٪ کمتر کنی، این ماه حدود ۳۴۰.۰۰۰ تومان صرفه‌جویی می‌کنی."
+                        android:textColor="#4F46E5"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+        <!-- کارت عادت خرج -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardHabit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="20dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="26dp"
+            app:cardElevation="0dp"
+            app:strokeColor="#E5E7EB"
+            app:strokeWidth="1dp"
+            app:layout_constraintTop_toBottomOf="@id/cardInsight"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layoutDirection="rtl"
+                android:orientation="vertical"
+                android:padding="18dp">
+
+                <!-- Header -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:fontFamily="@font/vazirmatn_bold"
+
+                            android:id="@+id/tvBehaviorTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="الگوی خرج کردن ✨"
+                            android:textColor="#111827"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+
+                            android:id="@+id/tvBehaviorSubtitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:fontFamily="@font/vazirmatn_regular"
+                            android:text="تحلیل هوشمند بر اساس تراکنش‌های شما"
+                            android:textColor="#6B7280"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        app:cardBackgroundColor="#EEF2FF"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="0dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="🌱"
+                            android:textSize="22sp" />
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+                <!-- Top Info Cards -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:orientation="horizontal">
+
+                    <!-- بیشترین روز خرج -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="6dp"
+                        app:cardBackgroundColor="#F8FAFC"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="#E2E8F0"
+                        app:strokeWidth="1dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical"
+                            android:padding="14dp">
+
+                            <TextView
+                                android:fontFamily="@font/vazirmatn_bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="بیشترین روز خرج"
+                                android:textColor="#64748B"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:fontFamily="@font/vazirmatn_regular"
+                                android:id="@+id/tvMostSpendingDay"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="جمعه"
+                                android:textColor="#111827"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:fontFamily="@font/vazirmatn_regular"
+                                android:id="@+id/tvMostSpendingDayAmount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="۱.۲۵۰.۰۰۰ تومان"
+                                android:textColor="#4F46E5"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- پرتکرارترین دسته -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="6dp"
+                        app:cardBackgroundColor="#F8FAFC"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="#E2E8F0"
+                        app:strokeWidth="1dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical"
+                            android:padding="14dp">
+
+                            <TextView
+                                android:fontFamily="@font/vazirmatn_bold"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="پرتکرارترین دسته"
+                                android:textColor="#64748B"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tvMostFrequentCategory"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="6dp"
+                                android:text="🍔 غذا"
+                                android:textColor="#111827"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvMostFrequentCategoryCount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="۱۲ تراکنش"
+                                android:textColor="#4F46E5"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+                <!-- Saving Suggestion -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardSavingSuggestion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    app:cardBackgroundColor="#F0FDF4"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="#BBF7D0"
+                    app:strokeWidth="1dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:padding="14dp">
+
+                        <TextView
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
+                            android:gravity="center"
+                            android:background="@drawable/bg_soft_green_circle"
+                            android:text="💡"
+                            android:textSize="20sp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="12dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:fontFamily="@font/vazirmatn_bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="پیشنهاد صرفه‌جویی"
+                                android:textColor="#065F46"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:fontFamily="@font/vazirmatn_regular"
+                                android:id="@+id/tvSavingSuggestion"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="6dp"
+                                android:text="اگر هزینه‌های دسته غذا را ۱۰٪ کمتر کنی، حدود ۳۴۰.۰۰۰ تومان صرفه‌جویی می‌کنی."
+                                android:textColor="#047857"
+                                android:textSize="13sp"
+                                android:lineSpacingExtra="4dp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Warning -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardSpendingWarning"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:cardBackgroundColor="#FFF7ED"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="#FED7AA"
+                    app:strokeWidth="1dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="14dp">
+
+                        <TextView
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
+                            android:gravity="center"
+                            android:background="@drawable/bg_soft_orange_circle"
+                            android:text="⚠️"
+                            android:textSize="20sp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="12dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:fontFamily="@font/vazirmatn_bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="هشدار رفتار خرج"
+                                android:textColor="#C2410C"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:fontFamily="@font/vazirmatn_bold"
+                                android:id="@+id/tvSpendingWarning"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="6dp"
+                                android:text="این ماه هزینه‌ها نسبت به ماه قبل افزایش داشته؛ بهتر است دسته غذا را بیشتر مدیریت کنی."
+                                android:textColor="#9A3412"
+                                android:textSize="13sp"
+                                android:lineSpacingExtra="4dp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- عنوان دسته‌ها -->
+        <LinearLayout
+            android:id="@+id/layoutCategoryHeader"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardHabit">
+
+            <TextView
+                android:id="@+id/tvCategoriesTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="هزینه بر اساس دسته‌بندی"
+                android:textColor="#111827"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+        <!-- لیست دسته‌ها -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCategoryAnalytics"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:nestedScrollingEnabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutCategoryHeader"
+            tools:itemCount="1"
+            tools:listitem="@layout/item_rcl_category" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EEF2FF">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layoutDirection="rtl">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layoutDirection="rtl"
+                tools:ignore="MissingConstraints">
+
+                <!-- عنوان -->
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/vazirmatn_bold"
+                    android:text="حسابینو "
+                    android:textColor="#1F1F1F"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <!-- کارت موجودی -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_marginTop="8dp"
+                    android:id="@+id/cardBalance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="20dp"
+                    app:cardBackgroundColor="#4F46E5"
+                    app:cardCornerRadius="28dp"
+                    app:cardElevation="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvTitle">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_balance_gradient"
+                        android:padding="22dp">
+
+                        <!-- برچسب بالا -->
+                        <TextView
+                            android:id="@+id/tvBalanceLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/vazirmatn_regular"
+                            android:text="موجودی کل"
+                            android:textColor="#E9E7FF"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <!-- آیکن -->
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/cardWalletIcon"
+                            android:layout_width="52dp"
+                            android:layout_height="52dp"
+                            app:cardBackgroundColor="#26FFFFFF"
+                            app:cardCornerRadius="18dp"
+                            app:cardElevation="0dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_wallet_outline"
+                                app:tint="#FFFFFF" />
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <!-- مبلغ -->
+                        <TextView
+                            android:id="@+id/tvBalance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/vazirmatn_semibold"
+                            android:text="۱۲,۴۵۰,۰۰۰ تومان"
+                            android:textColor="#FFFFFF"
+                            android:textSize="28sp"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tvBalanceLabel" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- کارت درآمد و هزینه -->
+                <LinearLayout
+
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="8dp"
+                    android:id="@+id/miniCards"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardBalance">
+
+                    <!-- هزینه -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardStats"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_marginBottom="4dp"
+                        app:cardBackgroundColor="#FFFFFF"
+                        app:cardCornerRadius="24dp"
+                        app:cardElevation="2dp"
+                        app:strokeColor="#EEF2F7"
+                        app:strokeWidth="1dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="18dp"
+                            android:weightSum="2">
+
+                            <!-- درآمد -->
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="4dp"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <com.google.android.material.card.MaterialCardView
+                                    android:layout_width="46dp"
+                                    android:layout_height="46dp"
+                                    app:cardBackgroundColor="#EAFBF1"
+                                    app:cardCornerRadius="16dp"
+                                    app:cardElevation="0dp">
+
+                                    <ImageView
+                                        android:layout_width="22dp"
+                                        android:layout_height="22dp"
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/ic_trending_up"
+                                        app:tint="#16A34A" />
+                                </com.google.android.material.card.MaterialCardView>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="12dp"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/vazirmatn_regular"
+                                        android:text="درآمد"
+                                        android:textColor="#6B7280"
+                                        android:textSize="13sp" />
+
+                                    <TextView
+                                        android:id="@+id/tvIncome"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="4dp"
+                                        android:fontFamily="@font/vazirmatn_semibold"
+                                        android:text="۳,۲۰۰,۰۰۰ تومان"
+                                        android:textColor="#16A34A"
+                                        android:textSize="12sp"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <!-- دیوایدر -->
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="52dp"
+                                android:layout_gravity="center_vertical"
+                                android:background="#EEF2F7" />
+
+                            <!-- هزینه -->
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <com.google.android.material.card.MaterialCardView
+                                    android:layout_width="46dp"
+                                    android:layout_height="46dp"
+                                    app:cardBackgroundColor="#FFF1F2"
+                                    app:cardCornerRadius="16dp"
+                                    app:cardElevation="0dp">
+
+                                    <ImageView
+                                        android:layout_width="22dp"
+                                        android:layout_height="22dp"
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/ic_trending_down"
+                                        app:tint="#EF4444" />
+                                </com.google.android.material.card.MaterialCardView>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="12dp"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/vazirmatn_regular"
+                                        android:text="هزینه"
+                                        android:textColor="#6B7280"
+                                        android:textSize="13sp" />
+
+                                    <TextView
+                                        android:id="@+id/tvExpense"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="4dp"
+                                        android:fontFamily="@font/vazirmatn_semibold"
+                                        android:text="۳,۲۰۰,۰۰۰ تومان"
+                                        android:textColor="@color/red"
+                                        android:textSize="12sp"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+                <!-- کارت تحلیل هزینه‌ها - نسخه شیک‌تر -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardAnalytics"
+                    android:layout_width="00dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:clickable="false"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="#E6E8F0"
+                    app:strokeWidth="1dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/miniCards">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layoutDirection="rtl"
+                        android:paddingStart="18dp"
+                        android:paddingEnd="18dp"
+                        android:paddingBottom="18dp">
+
+                        <!-- خط تزئینی سمت راست کارت -->
+                        <View
+                            android:id="@+id/viewAnalyticsAccent"
+                            android:layout_width="5dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_height="90dp"
+                            android:background="@drawable/bg_analytics_accent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <!-- آیکون تحلیل -->
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_marginBottom="12dp"
+                            android:id="@+id/iconContainer"
+                            android:layout_width="54dp"
+                            android:layout_height="54dp"
+                            android:layout_marginStart="14dp"
+                            app:cardBackgroundColor="#EEF2FF"
+                            app:cardCornerRadius="18dp"
+                            app:cardElevation="0dp"
+                            app:strokeColor="#DDD7FF"
+                            app:strokeWidth="1dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/viewAnalyticsAccent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <ImageView
+                                android:id="@+id/imgAnalytics"
+                                android:layout_width="26dp"
+                                android:layout_height="26dp"
+                                android:layout_gravity="center"
+                                android:alpha="0.9"
+                                android:src="@android:drawable/ic_menu_sort_by_size"
+                                app:tint="#4F46E5" />
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <!-- عنوان -->
+                        <TextView
+                            android:id="@+id/tvAnalyticsTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:fontFamily="@font/vazirmatn_bold"
+                            android:text="تحلیل هزینه‌ها"
+                            android:textColor="#111827"
+                            android:textSize="17sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/iconContainer"
+                            app:layout_constraintTop_toTopOf="@id/iconContainer" />
+
+                        <!-- زیرعنوان -->
+                        <TextView
+                            android:id="@+id/tvAnalyticsSubtitle"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+
+                            android:fontFamily="@font/vazirmatn_regular"
+                            android:text="بررسی خرج‌ها بر اساس عادت‌های مالی"
+                            android:textColor="#6B7280"
+                            android:textSize="12.5sp"
+                            android:maxLines="1"
+                            android:ellipsize="end"
+                            app:layout_constraintEnd_toEndOf="@id/tvAnalyticsTitle"
+                            app:layout_constraintStart_toStartOf="@id/tvAnalyticsTitle"
+                            app:layout_constraintTop_toBottomOf="@id/tvAnalyticsTitle" />
+
+                        <!-- اکشن -->
+                        <TextView
+                            android:id="@+id/tvAnalyticsAction"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:background="@drawable/bg_analytics_action_pill"
+                            android:fontFamily="@font/vazirmatn_bold"
+                            android:paddingStart="12dp"
+                            android:paddingTop="5dp"
+                            android:paddingEnd="12dp"
+                            android:paddingBottom="5dp"
+                            android:text="مشاهده جزئیات"
+                            android:textColor="#4F46E5"
+                            android:textSize="12.5sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="@id/tvAnalyticsSubtitle"
+                            app:layout_constraintTop_toBottomOf="@id/tvAnalyticsSubtitle" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+                <!-- عنوان تراکنش‌ها -->
+                <TextView
+                    android:id="@+id/tvRecent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/vazirmatn_bold"
+                    android:text="تراکنش‌های اخیر"
+                    android:textColor="#1F1F1F"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/cardAnalytics"
+                    app:layout_constraintTop_toBottomOf="@+id/cardAnalytics" />
+
+                <!-- لیست -->
+                <androidx.recyclerview.widget.RecyclerView
+
+                    android:id="@+id/rvTransactions"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="100dp"
+                    android:nestedScrollingEnabled="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvRecent"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/item_rcl_transaction" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:src="@android:drawable/ic_input_add"
+        app:backgroundTint="#5047E6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:tint="@color/white" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layoutDirection="rtl"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="#FFFFFF">
+
+    <View
+        android:layout_width="48dp"
+        android:layout_height="5dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/bg_bottom_sheet_handle" />
+
+    <TextView
+        android:fontFamily="@font/vazirmatn_bold"
+
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="تنظیم سقف هزینه"
+        android:textColor="#111827"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvCategoryName"
+        android:fontFamily="@font/vazirmatn_regular"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="دسته‌بندی: غذا"
+        android:textColor="#6B7280"
+        android:textSize="14sp" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        app:cardBackgroundColor="#EEF2FF"
+        app:cardCornerRadius="18dp"
+        app:cardElevation="0dp">
+
+        <TextView
+            android:id="@+id/tvCurrentStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:fontFamily="@font/vazirmatn_regular"
+
+            android:text="تا الان ۱,۲۰۰,۰۰۰ تومان از این دسته خرج شده"
+            android:textColor="#4F46E5"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilBudgetLimit"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:hint="سقف هزینه (تومان)"
+        app:boxCornerRadiusTopStart="18dp"
+        app:boxCornerRadiusTopEnd="18dp"
+        app:boxCornerRadiusBottomStart="18dp"
+        app:boxCornerRadiusBottomEnd="18dp"
+        app:boxStrokeColor="#4F46E5"
+        app:startIconDrawable="@android:drawable/ic_dialog_info"
+        app:startIconTint="#4F46E5">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etBudgetLimit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end|center_vertical"
+            android:inputType="number"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="#111827"
+
+            android:textSize="16sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tvHint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/vazirmatn_regular"
+
+        android:text="وقتی هزینه‌های این دسته از سقف تعیین‌شده بیشتر بشه، بهت هشدار می‌دیم."
+        android:textColor="#9CA3AF"
+        android:textSize="13sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSaveBudget"
+            android:layout_width="0dp"
+            android:layout_height="54dp"
+            android:layout_weight="1"
+            android:text="ذخیره"
+            android:fontFamily="@font/vazirmatn_regular"
+
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:backgroundTint="#4F46E5"
+            app:cornerRadius="16dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCancel"
+            android:layout_width="0dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:text="لغو"
+            android:fontFamily="@font/vazirmatn_regular"
+
+            android:textColor="#4F46E5"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:backgroundTint="#EEF2FF"
+            app:cornerRadius="16dp" />
+    </LinearLayout>
+
+</LinearLayout>
